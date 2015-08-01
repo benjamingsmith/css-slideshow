@@ -1,0 +1,28 @@
+body {
+	background-color:#000;
+}
+
+li {
+	list-style: none;
+}
+
+.slideshow {
+	width:600px;
+	height:200px;
+	position: relative;
+}
+
+.slideshow-item {
+		position:absolute;
+		width:100%;
+		height:100%;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    -moz-transition: opacity 1s ease-out;
+    -webkit-transition: opacity 1s ease-out;
+    background:#33eeff;
+}
+
+.slideshow-item.active {
+    opacity: 1;
+}
