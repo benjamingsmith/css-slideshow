@@ -1,4 +1,4 @@
-### Basic Useage:
+### Basic Usage:
 ```javascript
 $('.slideshow-container').cssSlideshow();
 ```

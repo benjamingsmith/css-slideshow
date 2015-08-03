@@ -1,4 +1,4 @@
-/** Useage:
+/** Usage:
 $('.slideshow-container').cssSlideshow();
 
 set speed with:
