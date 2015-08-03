@@ -4,5 +4,5 @@ $('.slideshow-container').cssSlideshow();
 ```
 ### Options:
 ```javascript
-$('.slideshow-container').cssSlideshow({speed:number});
+$('.slideshow-container').cssSlideshow({speed:number,easing:'ease-option',transitionSpeed:number});
 ```
