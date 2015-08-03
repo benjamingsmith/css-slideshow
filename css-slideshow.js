@@ -8,7 +8,9 @@ $('.slideshow-container').cssSlideshow({speed:number});
 (function($) {
   $.fn.cssSlideshow = function(options) {
     var defaults = {
-      speed: 4
+      speed: 4,
+      easing: 'ease-out',
+      transitionSpeed: 1
     }
     var options = $.extend({}, defaults, options);
 
@@ -17,18 +19,38 @@ $('.slideshow-container').cssSlideshow({speed:number});
     var firstItem = slideshow.children().first();
     var maxImages = slideshow.children().length;
 
+    // set default css properties on slideshow items
+    $.each(slideshow.children(), function(i, v) {
+      $(v).css({
+        'position': 'absolute',
+        'opacity': '0',
+        'transition': 'opacity '+options.transitionSpeed+'s '+options.easing,
+        '-moz-transition': 'opacity '+options.transitionSpeed+'s '+options.easing
+      });
+    });
+    // set first item as active
+    firstItem.addClass('active').css({
+      'opacity': '1'
+    });
+
     function rotateImages(slideshowCont) {
       var slideshowItem = slideshow.children().first();
-      firstItem.addClass('active');
-
       var rotator = setInterval(function() {
 
         var nextImage = $('.active').next(slideshowItem);
         if (currentImage == maxImages) {
           currentImage = 1;
-          slideshowItem.addClass('active').siblings().removeClass('active');
+          slideshowItem.addClass('active').css({
+            'opacity': '1'
+          }).siblings().removeClass('active').css({
+            'opacity': '0'
+          });
         } else {
-          nextImage.addClass('active').siblings().removeClass('active');
+          nextImage.addClass('active').css({
+            'opacity': '1'
+          }).siblings().removeClass('active').css({
+            'opacity': '0'
+          });
           currentImage++;
         }
       }, options.speed * 1000);
